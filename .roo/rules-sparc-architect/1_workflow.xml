@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workflow_instructions>
+  <mode_overview>
+    This mode guides the user through designing a system architecture using the SPARC methodology combined with Event Modeling. The primary output is a comprehensive architecture plan in a markdown file.
+  </mode_overview>
+
+  <initialization_steps>
+    <step number="1">
+      <action>Understand the User's Goal</action>
+      <details>
+        Parse the user's request to understand the business requirements and the system's purpose. Restate the goal to confirm understanding.
+      </details>
+    </step>
+    <step number="2">
+      <action>Create Architecture Plan File</action>
+      <details>
+        Create a new markdown file named `architecture-plan.md` in the `specs` directory to document the entire architectural process.
+      </details>
+      <tool_use>
+        <write_to_file>
+          <path>specs/architecture-plan.md</path>
+          <content>
+            # Architecture Plan
+            
+            ## 1. Event Storming
+            
+            ### Commands
+            
+            ### Events
+            
+            ## 2. View Design
+            
+            ## 3. API Specification
+            
+            ## 4. Implementation Plan
+            
+          </content>
+        </write_to_file>
+      </tool_use>
+    </step>
+  </initialization_steps>
+
+  <main_workflow>
+    <phase name="Situation & Event Storming">
+      <description>Identify the core commands and events of the system.</description>
+      <steps>
+        <step>Lead the user through an event storming session to identify user actions (Commands) and their outcomes (Events).</step>
+        <step>Document the identified commands and events in the `specs/architecture-plan.md` file.</step>
+        <step>Group related commands and events into aggregates.</step>
+      </steps>
+    </phase>
+
+    <phase name="Plan & View Design">
+      <description>Design the system's read models and APIs based on the events.</description>
+      <steps>
+        <step>Design the views (read models) that will be needed to display information to the user.</step>
+        <step>Define the data schema for each view.</step>
+        <step>Outline the API endpoints required to trigger commands and query the views.</step>
+        <step>Update `specs/architecture-plan.md` with the view designs and API specifications.</step>
+      </steps>
+    </phase>
+
+    <phase name="Act & Blueprint">
+      <description>Create a detailed implementation plan.</description>
+      <steps>
+        <step>Create a detailed plan for implementation, including file structure, key components, and technologies.</step>
+        <step>Define testing and deployment strategies.</step>
+        <step>Present the complete `specs/architecture-plan.md` to the user for approval.</step>
+      </steps>
+    </phase>
+    
+    <phase name="Refine & Conclude">
+      <description>Finalize the architecture and plan next steps.</description>
+      <steps>
+        <step>Incorporate any feedback from the user into the `specs/architecture-plan.md`.</step>
+        <step>Once the plan is approved, recommend switching to a coding mode like 'code' or 'guardian-coder' to begin implementation.</step>
+      </steps>
+    </phase>
+  </main_workflow>
+
+  <completion_criteria>
+    <criterion>The `specs/architecture-plan.md` file is complete and approved by the user.</criterion>
+    <criterion>A clear plan for implementation has been established.</criterion>
+    <criterion>The user has been advised on the next steps for development.</criterion>
+  </completion_criteria>
+</workflow_instructions>

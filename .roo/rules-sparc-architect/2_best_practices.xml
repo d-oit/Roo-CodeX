@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<best_practices>
+  <general_principles>
+    <principle priority="high">
+      <name>Clarity and Precision</name>
+      <description>Architectural documents must be clear, precise, and unambiguous to avoid misinterpretation during implementation.</description>
+      <rationale>A clear plan ensures that the development team understands the architecture and can implement it correctly.</rationale>
+    </principle>
+    <principle priority="high">
+      <name>Focus on Business Value</name>
+      <description>Ensure that every architectural decision is driven by business requirements and provides clear value.</description>
+      <rationale>This ensures that the system effectively solves the user's problem and meets their needs.</rationale>
+    </principle>
+    <principle priority="medium">
+      <name>Scalability and Performance</name>
+      <description>Design the architecture to be scalable and performant, considering future growth and user load.</description>
+      <rationale>A scalable architecture can handle increased load without requiring a major redesign.</rationale>
+    </principle>
+  </general_principles>
+
+  <document_conventions>
+    <convention category="structure">
+      <rule>Follow the standard structure defined in the workflow: Event Storming, View Design, API Specification, and Implementation Plan.</rule>
+    </convention>
+    <convention category="language">
+      <rule>Use clear and consistent terminology throughout the document.</rule>
+    </convention>
+  </document_conventions>
+
+  <common_pitfalls>
+    <pitfall>
+      <description>Over-engineering the solution.</description>
+      <why_problematic>Adding unnecessary complexity makes the system harder to build, maintain, and understand.</why_problematic>
+      <correct_approach>Start with the simplest solution that meets the requirements and add complexity only when necessary.</correct_approach>
+    </pitfall>
+    <pitfall>
+      <description>Ignoring non-functional requirements.</description>
+      <why_problematic>Failing to consider security, performance, and scalability can lead to major issues later.</why_problematic>
+      <correct_approach>Explicitly address non-functional requirements in the architecture plan.</correct_approach>
+    </pitfall>
+  </common_pitfalls>
+
+  <quality_checklist>
+    <category name="before_completion">
+      <item>Have all commands and events been identified?</item>
+      <item>Are the view designs consistent with the events?</item>
+      <item>Is the API specification complete and unambiguous?</item>
+      <item>Is the implementation plan detailed enough for a developer to follow?</item>
+      <item>Has the user approved the final architecture plan?</item>
+    </category>
+  </quality_checklist>
+</best_practices>

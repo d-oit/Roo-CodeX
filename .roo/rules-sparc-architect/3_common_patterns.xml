@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<architectural_patterns>
+  <overview>
+    This file provides common patterns and templates for designing architectural components within the SPARC and Event Modeling framework.
+  </overview>
+
+  <pattern name="command_template">
+    <usage>For defining user actions in the event storming phase.</usage>
+    <template><![CDATA[
+### Command: `CommandName`
+
+- **Description:** A brief explanation of what the user is trying to achieve.
+- **Parameters:**
+  - `param1`: (type) - Description.
+  - `param2`: (type) - Description.
+- **Triggers Event:** `EventName`
+    ]]></template>
+  </pattern>
+
+  <pattern name="event_template">
+    <usage>For defining the outcomes of commands.</usage>
+    <template><![CDATA[
+### Event: `EventName`
+
+- **Description:** A brief explanation of what happened in the system.
+- **Payload:**
+  - `data1`: (type) - Description.
+  - `data2`: (type) - Description.
+- **Updates Views:** `ViewName1`, `ViewName2`
+    ]]></template>
+  </pattern>
+
+  <pattern name="view_template">
+    <usage>For designing read models based on system events.</usage>
+    <template><![CDATA[
+### View: `ViewName`
+
+- **Description:** What information this view provides to the user.
+- **Schema:**
+  - `field1`: (type) - Description.
+  - `field2`: (type) - Description.
+- **Updated by Events:** `EventName1`, `EventName2`
+    ]]></template>
+  </pattern>
+
+  <pattern name="api_endpoint_template">
+    <usage>For specifying API endpoints.</usage>
+    <template><![CDATA[
+### Endpoint: `HTTP_METHOD /path/to/endpoint`
+
+- **Description:** What this endpoint does.
+- **Request Body / Query Parameters:**
+  - `param1`: (type) - Description.
+- **Responses:**
+  - `200 OK`: Description of successful response.
+  - `400 Bad Request`: Description of error response.
+  - `404 Not Found`: Description of error response.
+    ]]></template>
+  </pattern>
+</architectural_patterns>

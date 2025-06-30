@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<complete_examples>
+  <example name="design_a_user_login_feature">
+    <scenario>
+      This example demonstrates how to design a simple user login feature, from initial request to final architectural plan.
+    </scenario>
+    
+    <user_request>
+      "I need to add a user login feature to my application."
+    </user_request>
+
+    <workflow>
+      <step number="1">
+        <description>Understand the goal and create the architecture plan file.</description>
+        <tool_use><![CDATA[
+<write_to_file>
+  <path>specs/architecture-plan.md</path>
+  <content>
+# Architecture Plan: User Login Feature
+
+## 1. Event Storming
+
+### Commands
+
+- **`AttemptLogin`**: User provides email and password.
+  - Triggers Event: `UserLoginAttempted`
+
+### Events
+
+- **`UserLoginAttempted`**: Fired when a user tries to log in.
+  - Payload: `email`
+  - Updates Views: `UserSessionView`
+
+- **`UserLoggedIn`**: Fired on successful login.
+  - Payload: `userId`, `token`
+  - Updates Views: `UserSessionView`
+
+- **`LoginFailed`**: Fired on failed login.
+  - Payload: `email`, `reason`
+  - Updates Views: `LoginErrorView`
+
+## 2. View Design
+
+### View: `UserSessionView`
+- **Description:** Displays the current user's session status.
+- **Schema:**
+  - `isLoggedIn`: (boolean)
+  - `userId`: (string, optional)
+  - `userName`: (string, optional)
+
+### View: `LoginErrorView`
+- **Description:** Displays login error messages.
+- **Schema:**
+  - `hasError`: (boolean)
+  - `errorMessage`: (string, optional)
+
+## 3. API Specification
+
+### Endpoint: `POST /api/login`
+- **Description:** Authenticates a user.
+- **Request Body:**
+  - `email`: (string)
+  - `password`: (string)
+- **Responses:**
+  - `200 OK`: { "token": "jwt_token" }
+  - `401 Unauthorized`: { "error": "Invalid credentials" }
+
+## 4. Implementation Plan
+
+- **Frontend:**
+  - Create a login form component.
+  - Manage session state.
+- **Backend:**
+  - Create a login controller.
+  - Implement JWT-based authentication.
+  - Add a new route for `/api/login`.
+  </content>
+</write_to_file>
+        ]]></tool_use>
+        <expected_outcome>A complete architecture plan for the login feature is created in `specs/architecture-plan.md`.</expected_outcome>
+      </step>
+
+      <step number="2">
+        <description>Get user approval for the plan.</description>
+        <tool_use><![CDATA[
+<ask_followup_question>
+  <question>I have created the architecture plan for the user login feature. Are you ready to approve it and proceed with implementation?</question>
+  <follow_up>
+    <suggest mode="code">Yes, approve the plan and switch to Code mode.</suggest>
+    <suggest>No, I have some changes.</suggest>
+  </follow_up>
+</ask_followup_question>
+        ]]></tool_use>
+      </step>
+    </workflow>
+
+    <completion><![CDATA[
+<attempt_completion>
+  <result>
+    The architecture for the user login feature has been designed and documented in `specs/architecture-plan.md`. The plan is now ready for implementation.
+  </result>
+</attempt_completion>
+    ]]></completion>
+
+    <key_takeaways>
+      <takeaway>This example shows how to break down a feature into commands, events, and views.</takeaway>
+      <takeaway>The process results in a clear, actionable plan for developers.</takeaway>
+    </key_takeaways>
+  </example>
+</complete_examples>

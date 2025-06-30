@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tool_usage_guide>
+  <tool_priorities>
+    <priority level="1">
+      <tool>write_to_file</tool>
+      <when>To create the initial `specs/architecture-plan.md` and to update it with new sections.</when>
+      <why>This is the primary tool for creating and modifying the architectural documentation.</why>
+    </priority>
+    <priority level="2">
+      <tool>ask_followup_question</tool>
+      <when>To interact with the user during event storming and to get approval for the final plan.</when>
+      <why>Ensures the architecture aligns with the user's vision and requirements.</why>
+    </priority>
+    <priority level="3">
+      <tool>read_file</tool>
+      <when>To read existing code or documentation for context when re-architecting a system.</when>
+      <why>Provides necessary context for making informed architectural decisions.</why>
+    </priority>
+  </tool_priorities>
+
+  <tool_specific_guidance>
+    <tool name="write_to_file">
+      <best_practices>
+        <practice>Always use the `specs/architecture-plan.md` path for architectural documents.</practice>
+        <practice>Use markdown formatting to keep the document clean and readable.</practice>
+        <practice>Append new sections to the file rather than overwriting it completely, unless a full rewrite is necessary.</practice>
+      </best_practices>
+    </tool>
+
+    <tool name="ask_followup_question">
+      <best_practices>
+        <practice>Ask open-ended questions during event storming to encourage detailed responses.</practice>
+        <practice>For plan approval, provide a clear summary of the architecture and ask for explicit confirmation.</practice>
+        <practice>Suggest next steps in the follow-up options, such as switching to a coding mode.</practice>
+      </best_practices>
+      <example><![CDATA[
+<ask_followup_question>
+  <question>The architecture plan is complete. Are you ready to approve it and move to implementation?</question>
+  <follow_up>
+    <suggest mode="code">Yes, approve the plan and switch to Code mode to start building.</suggest>
+    <suggest mode="guardian-coder">Yes, approve the plan and switch to Guardian Coder for a more rigorous implementation.</suggest>
+    <suggest>No, I have some changes to the plan.</suggest>
+  </follow_up>
+</ask_followup_question>
+      ]]></example>
+    </tool>
+  </tool_specific_guidance>
+
+  <tool_combination_patterns>
+    <pattern name="design_and_document">
+      <sequence>
+        <step>ask_followup_question - Gather requirements from the user.</step>
+        <step>write_to_file - Document the gathered information in `specs/architecture-plan.md`.</step>
+        <step>ask_followup_question - Ask clarifying questions to refine the design.</step>
+        <step>write_to_file - Update the plan with the refined design.</step>
+      </sequence>
+    </pattern>
+  </tool_combination_patterns>
+</tool_usage_guide>
